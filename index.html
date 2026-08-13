@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OBRA Art</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#18150f;
+    --paper:#f7f3ea;
+    --gold:#b8862c;
+    --rust:#bd5a2e;
+    --line:#e4ddca;
+    --muted:#726c5a;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1180px; margin:0 auto; padding:0 48px;}
+
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(247,243,234,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{display:flex; align-items:center; justify-content:space-between; padding:24px 0;}
+  .logo{
+    font-family:'Archivo', sans-serif;
+    font-weight:800;
+    font-size:22px;
+    letter-spacing:0.01em;
+    color:var(--gold);
+    cursor:pointer;
+    background:none; border:none;
+  }
+  .nav-links{display:flex; gap:36px; list-style:none;}
+  .nav-links button{
+    background:none; border:none; cursor:pointer;
+    font-family:'Work Sans', sans-serif;
+    font-size:13px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--ink);
+    padding:4px 0;
+    border-bottom:1px solid transparent;
+    transition:border-color .2s ease, color .2s ease;
+  }
+  .nav-links button:hover{color:var(--rust);}
+  .nav-links button.active{border-color:var(--gold); color:var(--gold);}
+  .ig-link{
+    display:flex; align-items:center; justify-content:center;
+    color:var(--rust);
+    transition:color .2s ease, transform .2s ease;
+  }
+  .ig-link:hover{color:var(--gold); transform:scale(1.08);}
+
+  main{padding-top:8px;}
+  section{display:none;}
+  section.active{display:block; animation:fade .5s ease;}
+  @keyframes fade{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
+
+  .eyebrow{
+    font-family:'Work Sans', sans-serif;
+    font-weight:500;
+    font-size:12px; letter-spacing:0.18em; text-transform:uppercase;
+    color:var(--muted); margin-bottom:18px;
+  }
+
+  /* PROJECTS */
+  .projects-head{padding:64px 0 44px; border-bottom:1px solid var(--line);}
+  .projects-head h1{
+    font-family:'Archivo', sans-serif;
+    font-weight:800;
+    font-size:52px;
+    line-height:1.04;
+    letter-spacing:-0.01em;
+    max-width:680px;
+  }
+  .projects-head h1 span{color:var(--gold);}
+  .projects-head p{
+    margin-top:20px;
+    font-size:16px;
+    color:var(--muted);
+    max-width:480px;
+    line-height:1.7;
+  }
+
+  .project-list{padding:60px 0 100px;}
+  .project-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+    align-items:start;
+    padding:48px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .project-row:last-child{border-bottom:none;}
+  .project-row:nth-child(even) .project-img{order:2;}
+  .project-img{
+    aspect-ratio:4/3;
+    background:repeating-linear-gradient(135deg, #ece4cf, #ece4cf 2px, #f3ecdb 2px, #f3ecdb 16px);
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--muted);
+    font-size:12px;
+    text-align:center;
+    padding:24px;
+  }
+  .project-title{
+    font-family:'Archivo', sans-serif;
+    font-weight:800;
+    font-size:26px;
+    letter-spacing:-0.01em;
+    text-transform:uppercase;
+    margin-bottom:10px;
+    margin-top:8px;
+  }
+  .project-meta{font-size:15px; color:var(--muted); line-height:1.7;}
+
+  /* ABOUT */
+  .about{padding:64px 0 100px;}
+  .about-grid{display:grid; grid-template-columns:0.95fr 1fr; gap:72px; align-items:center;}
+  .about h1{
+    font-family:'Archivo', sans-serif;
+    font-weight:800;
+    font-size:46px;
+    line-height:1.06;
+    letter-spacing:-0.01em;
+    margin-bottom:28px;
+    max-width:520px;
+  }
+  .about h1 .accent{color:var(--gold);}
+  .about p{
+    font-size:16px; line-height:1.85; color:#3f3b30;
+    max-width:480px; margin-bottom:20px;
+  }
+  .signature{
+    font-family:'Archivo', sans-serif;
+    font-weight:700;
+    font-size:15px;
+    letter-spacing:0.03em;
+    color:var(--rust);
+    margin-top:6px;
+  }
+  .about-img{
+    aspect-ratio:4/5;
+    background:repeating-linear-gradient(135deg, #ece4cf, #ece4cf 2px, #f3ecdb 2px, #f3ecdb 16px);
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--muted); font-size:12px; text-align:center; padding:24px;
+  }
+
+  .cta{margin-top:96px; padding-top:52px; border-top:1px solid var(--line);}
+  .cta h2{
+    font-family:'Archivo', sans-serif;
+    font-weight:800;
+    font-size:22px;
+    margin-bottom:22px;
+  }
+  .cta form{display:flex; max-width:420px; border-bottom:1.5px solid var(--ink); padding-bottom:10px;}
+  .cta input{flex:1; border:none; background:none; outline:none; font-family:'Work Sans', sans-serif; font-size:15px; color:var(--ink);}
+  .cta input::placeholder{color:var(--muted);}
+  .cta button{background:none; border:none; cursor:pointer; font-family:'Archivo', sans-serif; font-weight:800; font-size:16px; color:var(--rust);}
+
+  .closer{margin-top:96px; padding-top:64px; border-top:1px solid var(--line);}
+  .closer h2{
+    font-family:'Archivo', sans-serif;
+    font-weight:800;
+    font-size:76px;
+    line-height:0.98;
+    letter-spacing:-0.01em;
+    text-transform:uppercase;
+    color:var(--ink);
+  }
+  .closer h2 span{color:var(--gold);}
+
+  footer{border-top:1px solid var(--line); padding:26px 0;}
+  .footer-row{display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;}
+  .footer-row .loc{font-size:13px; color:var(--muted); letter-spacing:0.02em;}
+  .footer-links{display:flex; gap:26px; list-style:none;}
+  .footer-links button{
+    background:none; border:none; cursor:pointer;
+    font-family:'Work Sans', sans-serif; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink);
+  }
+  .footer-links button.accent{color:var(--rust);}
+
+  @media (max-width:760px){
+    .wrap{padding:0 24px;}
+    .projects-head h1, .about h1{font-size:34px;}
+    .project-row, .about-grid{grid-template-columns:1fr; gap:24px;}
+    .project-row:nth-child(even) .project-img{order:0;}
+    .nav-links{gap:20px;}
+    .footer-row{flex-direction:column; align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <button class="logo" onclick="showSection('about')">OBRA</button>
+      <ul class="nav-links">
+        <li><button data-target="projects" class="active" onclick="showSection('projects')">Projects</button></li>
+        <li><button data-target="about" onclick="showSection('about')">About</button></li>
+        <li>
+          <a href="https://instagram.com/obra__art" target="_blank" rel="noopener" class="ig-link" aria-label="OBRA Art on Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="0.9" fill="currentColor" stroke="none"/></svg>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section id="projects" class="active">
+    <div class="wrap">
+      <div class="projects-head">
+        <div class="eyebrow">Selected exhibitions</div>
+        <h1>Emerging art, <span>wherever it belongs.</span></h1>
+        <p>From collectors' homes to restaurant walls — where the work has lived.</p>
+      </div>
+
+      <div class="project-list">
+
+        <div class="project-row">
+          <div class="project-img">Foto — Zarina Gorevaya en restaurante Giallo<br>(sustituir por imagen real)</div>
+          <div>
+            <div class="eyebrow">Restaurant show</div>
+            <div class="project-title">Zarina Gorevaya</div>
+            <div class="project-meta">First edition, five works, rotating — Restaurant Giallo, Luxembourg<br>Luxembourg Art Week, Nov 2026</div>
+          </div>
+        </div>
+
+        <div class="project-row">
+          <div class="project-img">Foto — Jenya Datsko, casa de coleccionista<br>(sustituir por imagen real)</div>
+          <div>
+            <div class="eyebrow">Collector's house</div>
+            <div class="project-title">Jenya Datsko</div>
+            <div class="project-meta">Hope to see you soon — Luxembourg, 2023</div>
+          </div>
+        </div>
+
+        <div class="project-row">
+          <div class="project-img">Foto — Duo show Barcelona<br>(sustituir por imagen real)</div>
+          <div>
+            <div class="eyebrow">Exhibition</div>
+            <div class="project-title">Duo show</div>
+            <div class="project-meta">Miriam Dema &amp; Chidy Wayne — Barcelona, 4–7 May 2023</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap about">
+      <div class="about-grid">
+        <div>
+          <div class="eyebrow">About OBRA</div>
+          <h1>Hidden gems, <span class="accent">unearthed.</span></h1>
+          <p>Building on our diverse backgrounds in finance and hospitality, we are now uniting our shared passion for art to champion the work of emerging artists.</p>
+          <p>Our philosophy extends beyond aesthetic appreciation; we are committed to nurturing the careers of promising talents, fostering long-term relationships, and empowering the next generation of artists.</p>
+          <p>Join us in discovering and celebrating the hidden gems of the art world.</p>
+          <div class="signature">Borja Giralt &amp; Charlotte Paritzky</div>
+        </div>
+        <div class="about-img">Foto — Borja &amp; Charlotte<br>(sustituir por imagen real)</div>
+      </div>
+
+      <div class="cta">
+        <h2>Want to know more?</h2>
+        <form onsubmit="event.preventDefault();">
+          <input type="email" placeholder="Email address" required>
+          <button type="submit" aria-label="Subscribe">&rarr;</button>
+        </form>
+      </div>
+
+      <div class="closer">
+        <h2>Emerging art,<br><span>everywhere.</span></h2>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <div class="loc">Luxembourg &mdash; &copy; 2026 OBRA Art</div>
+    <ul class="footer-links">
+      <li><button onclick="showSection('projects')">Projects</button></li>
+      <li><button onclick="showSection('about')">About</button></li>
+      <li><button class="accent">Contact</button></li>
+      <li>
+        <a href="https://instagram.com/obra__art" target="_blank" rel="noopener" class="ig-link" aria-label="OBRA Art on Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="0.9" fill="currentColor" stroke="none"/></svg>
+        </a>
+      </li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+function showSection(id){
+  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
+  document.querySelector('.nav-links button[data-target="'+id+'"]').classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+</script>
+
+</body>
+</html>
