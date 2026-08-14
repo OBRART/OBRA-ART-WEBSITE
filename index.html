@@ -6,7 +6,7 @@
 <title>OBRA Art</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root{
     --ink:#18150f;
@@ -35,14 +35,34 @@
   }
   nav{display:flex; align-items:center; justify-content:space-between; padding:24px 0;}
   .logo{
-    font-family:'Archivo', sans-serif;
-    font-weight:800;
-    font-size:22px;
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:24px;
     letter-spacing:0.01em;
     color:var(--gold);
     cursor:pointer;
     background:none; border:none;
+    position:relative;
+    display:inline-block;
+    height:30px;
+    width:100px;
   }
+  .logo span{
+    position:absolute;
+    left:0; top:0;
+    transition:opacity .35s ease, transform .35s ease;
+  }
+  .logo .full{opacity:1; transform:translateY(0);}
+  .logo .short{
+    opacity:0; transform:translateY(6px);
+    font-style:normal;
+    font-weight:700;
+    letter-spacing:0.14em;
+    font-size:20px;
+  }
+  header.scrolled .logo .full{opacity:0; transform:translateY(-6px);}
+  header.scrolled .logo .short{opacity:1; transform:translateY(0);}
   .nav-links{display:flex; gap:36px; list-style:none;}
   .nav-links button{
     background:none; border:none; cursor:pointer;
@@ -79,8 +99,8 @@
   /* PROJECTS */
   .projects-head{padding:64px 0 44px; border-bottom:1px solid var(--line);}
   .projects-head h1{
-    font-family:'Archivo', sans-serif;
-    font-weight:800;
+    font-family:'Fraunces', serif;
+    font-weight:600;
     font-size:52px;
     line-height:1.04;
     letter-spacing:-0.01em;
@@ -149,7 +169,7 @@
     margin-bottom:16px;
   }
   .project-bio strong{
-    font-family:'Archivo', sans-serif;
+    font-family:'Fraunces', serif;
     font-weight:700;
     color:var(--ink);
   }
@@ -158,11 +178,10 @@
     .project-gallery.large{grid-template-columns:repeat(2, 1fr);}
   }
   .project-title{
-    font-family:'Archivo', sans-serif;
-    font-weight:800;
-    font-size:26px;
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:30px;
     letter-spacing:-0.01em;
-    text-transform:uppercase;
     margin-bottom:10px;
     margin-top:8px;
   }
@@ -172,8 +191,8 @@
   .about{padding:64px 0 100px;}
   .about-grid{display:grid; grid-template-columns:0.95fr 1fr; gap:72px; align-items:center;}
   .about h1{
-    font-family:'Archivo', sans-serif;
-    font-weight:800;
+    font-family:'Fraunces', serif;
+    font-weight:600;
     font-size:46px;
     line-height:1.06;
     letter-spacing:-0.01em;
@@ -186,7 +205,7 @@
     max-width:480px; margin-bottom:20px;
   }
   .signature{
-    font-family:'Archivo', sans-serif;
+    font-family:'Fraunces', serif;
     font-weight:700;
     font-size:15px;
     letter-spacing:0.03em;
@@ -203,24 +222,24 @@
 
   .cta{margin-top:96px; padding-top:52px; border-top:1px solid var(--line);}
   .cta h2{
-    font-family:'Archivo', sans-serif;
-    font-weight:800;
+    font-family:'Fraunces', serif;
+    font-weight:600;
     font-size:22px;
     margin-bottom:22px;
   }
   .cta form{display:flex; max-width:420px; border-bottom:1.5px solid var(--ink); padding-bottom:10px;}
   .cta input{flex:1; border:none; background:none; outline:none; font-family:'Work Sans', sans-serif; font-size:15px; color:var(--ink);}
   .cta input::placeholder{color:var(--muted);}
-  .cta button{background:none; border:none; cursor:pointer; font-family:'Archivo', sans-serif; font-weight:800; font-size:16px; color:var(--rust);}
+  .cta button{background:none; border:none; cursor:pointer; font-family:'Fraunces', serif; font-weight:600; font-size:16px; color:var(--rust);}
 
   .closer{margin-top:96px; padding-top:64px; border-top:1px solid var(--line);}
   .closer h2{
-    font-family:'Archivo', sans-serif;
-    font-weight:800;
-    font-size:76px;
-    line-height:0.98;
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:64px;
+    line-height:1.05;
     letter-spacing:-0.01em;
-    text-transform:uppercase;
     color:var(--ink);
   }
   .closer h2 span{color:var(--gold);}
@@ -247,10 +266,10 @@
 </head>
 <body>
 
-<header>
+<header id="site-header">
   <div class="wrap">
     <nav>
-      <button class="logo" onclick="showSection('about')">OBRA</button>
+      <button class="logo" onclick="showSection('about')"><span class="full">OBRA</span><span class="short">OAP</span></button>
       <ul class="nav-links">
         <li><button data-target="projects" class="active" onclick="showSection('projects')">Projects</button></li>
         <li><button data-target="about" onclick="showSection('about')">About</button></li>
@@ -302,24 +321,6 @@
           </div>
         </div>
 
-        <div class="project-row">
-          <div class="project-img">Foto — Zarina Gorevaya en restaurante Giallo<br>(sustituir por imagen real)</div>
-          <div>
-            <div class="eyebrow">Restaurant show</div>
-            <div class="project-title">Zarina Gorevaya</div>
-            <div class="project-meta">First edition, five works, rotating — Restaurant Giallo, Luxembourg<br>Luxembourg Art Week, Nov 2026</div>
-          </div>
-        </div>
-
-        <div class="project-row">
-          <div class="project-img">Foto — Jenya Datsko, casa de coleccionista<br>(sustituir por imagen real)</div>
-          <div>
-            <div class="eyebrow">Collector's house</div>
-            <div class="project-title">Jenya Datsko</div>
-            <div class="project-meta">Hope to see you soon — Luxembourg, 2023</div>
-          </div>
-        </div>
-
         <div class="project-row full">
           <div>
             <div class="eyebrow">Exhibition</div>
@@ -363,7 +364,7 @@
           <p>Join us in discovering and celebrating the hidden gems of the art world.</p>
           <div class="signature">Borja Giralt &amp; Charlotte Paritzky</div>
         </div>
-        <div class="about-img">Foto — Borja &amp; Charlotte<br>(sustituir por imagen real)</div>
+        <div class="about-img"><img src="images/about-founders.jpg" alt="Borja Giralt &amp; Charlotte Paritzky" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
       </div>
 
       <div class="cta">
@@ -406,6 +407,17 @@ function showSection(id){
   document.querySelector('.nav-links button[data-target="'+id+'"]').classList.add('active');
   window.scrollTo({top:0, behavior:'smooth'});
 }
+
+const siteHeader = document.getElementById('site-header');
+function updateHeaderOnScroll(){
+  if(window.scrollY > 40){
+    siteHeader.classList.add('scrolled');
+  } else {
+    siteHeader.classList.remove('scrolled');
+  }
+}
+window.addEventListener('scroll', updateHeaderOnScroll);
+updateHeaderOnScroll();
 </script>
 
 </body>
