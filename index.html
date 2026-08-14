@@ -38,7 +38,7 @@
     font-family:'Fraunces', serif;
     font-style:italic;
     font-weight:600;
-    font-size:24px;
+    font-size:22px;
     letter-spacing:0.01em;
     color:var(--gold);
     cursor:pointer;
@@ -46,11 +46,12 @@
     position:relative;
     display:inline-block;
     height:30px;
-    width:100px;
+    width:280px;
   }
   .logo span{
     position:absolute;
     left:0; top:0;
+    white-space:nowrap;
     transition:opacity .35s ease, transform .35s ease;
   }
   .logo .full{opacity:1; transform:translateY(0);}
@@ -95,6 +96,25 @@
     font-size:12px; letter-spacing:0.18em; text-transform:uppercase;
     color:var(--muted); margin-bottom:18px;
   }
+
+  .hero-carousel{
+    position:relative;
+    width:100%;
+    height:56vh;
+    min-height:340px;
+    max-height:560px;
+    overflow:hidden;
+    background:var(--line);
+  }
+  .hero-slide{
+    position:absolute;
+    top:0; left:0;
+    width:100%; height:100%;
+    object-fit:cover;
+    opacity:0;
+    transition:opacity 1.2s ease;
+  }
+  .hero-slide.active{opacity:1;}
 
   /* PROJECTS */
   .projects-head{padding:64px 0 44px; border-bottom:1px solid var(--line);}
@@ -273,7 +293,7 @@
 <header id="site-header">
   <div class="wrap">
     <nav>
-      <button class="logo" onclick="showSection('about')"><span class="full">OBRA</span><span class="short">OAP</span></button>
+      <button class="logo" onclick="showSection('about')"><span class="full">OBRA Art Projects</span><span class="short">OAP</span></button>
       <ul class="nav-links">
         <li><button data-target="projects" class="active" onclick="showSection('projects')">Projects</button></li>
         <li><button data-target="about" onclick="showSection('about')">About</button></li>
@@ -290,6 +310,13 @@
 <main>
 
   <section id="projects" class="active">
+    <div class="hero-carousel">
+      <img src="images/duo-1.jpg" alt="" class="hero-slide active">
+      <img src="images/jomad-1.jpg" alt="" class="hero-slide">
+      <img src="images/jomad-4.jpg" alt="" class="hero-slide">
+      <img src="images/duo-4.jpg" alt="" class="hero-slide">
+      <img src="images/jomad-8.jpg" alt="" class="hero-slide">
+    </div>
     <div class="wrap">
       <div class="projects-head">
         <div class="eyebrow">Selected exhibitions</div>
@@ -421,6 +448,16 @@ function updateHeaderOnScroll(){
 }
 window.addEventListener('scroll', updateHeaderOnScroll);
 updateHeaderOnScroll();
+
+const heroSlides = document.querySelectorAll('.hero-slide');
+let heroIndex = 0;
+if(heroSlides.length > 1){
+  setInterval(() => {
+    heroSlides[heroIndex].classList.remove('active');
+    heroIndex = (heroIndex + 1) % heroSlides.length;
+    heroSlides[heroIndex].classList.add('active');
+  }, 3000);
+}
 </script>
 
 </body>
