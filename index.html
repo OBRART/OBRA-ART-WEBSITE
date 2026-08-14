@@ -116,6 +116,31 @@
     text-align:center;
     padding:24px;
   }
+  .project-gallery{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+  }
+  .project-gallery img{
+    width:100%;
+    height:100%;
+    aspect-ratio:1/1;
+    object-fit:cover;
+    display:block;
+    border:1px solid var(--line);
+  }
+  .project-row.full{
+    display:block;
+  }
+  .project-row.full .eyebrow{margin-bottom:12px;}
+  .project-row.full .project-title{margin-top:0;}
+  .project-gallery.large{
+    margin-top:32px;
+    grid-template-columns:repeat(4, 1fr);
+  }
+  @media (max-width:760px){
+    .project-gallery.large{grid-template-columns:repeat(2, 1fr);}
+  }
   .project-title{
     font-family:'Archivo', sans-serif;
     font-weight:800;
@@ -253,12 +278,24 @@
           </div>
         </div>
 
-        <div class="project-row">
-          <div class="project-img">Foto — Duo show Barcelona<br>(sustituir por imagen real)</div>
+        <div class="project-row full">
           <div>
             <div class="eyebrow">Exhibition</div>
             <div class="project-title">Duo show</div>
             <div class="project-meta">Miriam Dema &amp; Chidy Wayne — Barcelona, 4–7 May 2023</div>
+          </div>
+          <div class="project-gallery large">
+            <img src="images/duo-1.jpg" alt="Duo show installation view">
+            <img src="images/duo-2.jpg" alt="Duo show installation view">
+            <img src="images/duo-3.jpg" alt="Duo show installation view">
+            <img src="images/duo-4.jpg" alt="Duo show installation view">
+            <img src="images/duo-5.jpg" alt="Live guitar at the opening">
+            <img src="images/duo-6.jpg" alt="Chidy Wayne signed print, Barcelona 2023">
+            <img src="images/duo-7.jpg" alt="Duo show installation view">
+            <img src="images/duo-8.jpg" alt="Duo show installation view">
+            <img src="images/duo-9.jpg" alt="Duo show installation view">
+            <img src="images/duo-10.jpg" alt="Duo show installation view">
+            <img src="images/duo-11.jpg" alt="Duo show installation view">
           </div>
         </div>
 
