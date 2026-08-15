@@ -10,7 +10,7 @@
 <style>
   :root{
     --ink:#18150f;
-    --paper:#fbfaf6;
+    --paper:#ffffff;
     --gold:#b8862c;
     --rust:#bd5a2e;
     --line:#e4ddca;
@@ -29,7 +29,7 @@
 
   header{
     position:sticky; top:0; z-index:50;
-    background:rgba(247,243,234,0.92);
+    background:rgba(255,255,255,0.92);
     backdrop-filter:blur(6px);
     border-bottom:1px solid var(--line);
   }
@@ -57,10 +57,9 @@
   .logo .full{opacity:1; transform:translateY(0);}
   .logo .short{
     opacity:0; transform:translateY(6px);
-    font-style:normal;
-    font-weight:700;
-    letter-spacing:0.14em;
-    font-size:20px;
+  }
+  .logo .short img{
+    height:26px; width:auto; display:block;
   }
   header.scrolled .logo .full{opacity:0; transform:translateY(-6px);}
   header.scrolled .logo .short{opacity:1; transform:translateY(0);}
@@ -286,6 +285,17 @@
   }
   .closer h2 span{color:var(--gold);}
 
+  .about-logo{
+    margin-top:56px;
+    display:flex;
+    justify-content:center;
+  }
+  .about-logo img{
+    height:34px;
+    width:auto;
+    opacity:0.85;
+  }
+
   footer{border-top:1px solid var(--line); padding:26px 0;}
   .footer-row{display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;}
   .footer-row .loc{font-size:13px; color:var(--muted); letter-spacing:0.02em;}
@@ -315,7 +325,7 @@
 <header id="site-header">
   <div class="wrap">
     <nav>
-      <button class="logo" onclick="showSection('about')"><span class="full">OBRA Art Projects</span><span class="short">OAP</span></button>
+      <button class="logo" onclick="showSection('about')"><span class="full">OBRA Art Projects</span><span class="short"><img src="images/logo.png" alt="OBRA Art Projects"></span></button>
       <ul class="nav-links">
         <li><button data-target="projects" class="active" onclick="showSection('projects')">Projects</button></li>
         <li><button data-target="about" onclick="showSection('about')">About</button></li>
@@ -432,6 +442,10 @@
 
       <div class="closer">
         <h2>Emerging art,<br><span>everywhere.</span></h2>
+      </div>
+
+      <div class="about-logo">
+        <img src="images/logo.png" alt="OBRA Art Projects">
       </div>
     </div>
   </section>
