@@ -36,11 +36,11 @@
   nav{display:flex; align-items:center; justify-content:space-between; padding:24px 0;}
   .logo{
     font-family:'Fraunces', serif;
-    font-style:italic;
-    font-weight:600;
-    font-size:22px;
+    font-style:normal;
+    font-weight:700;
+    font-size:21px;
     letter-spacing:0.01em;
-    color:var(--gold);
+    color:var(--ink);
     cursor:pointer;
     background:none; border:none;
     position:relative;
@@ -75,14 +75,14 @@
     border-bottom:1px solid transparent;
     transition:border-color .2s ease, color .2s ease;
   }
-  .nav-links button:hover{color:var(--rust);}
-  .nav-links button.active{border-color:var(--gold); color:var(--gold);}
+  .nav-links button:hover{color:var(--muted);}
+  .nav-links button.active{border-color:var(--ink); color:var(--ink);}
   .ig-link{
     display:flex; align-items:center; justify-content:center;
-    color:var(--rust);
+    color:var(--ink);
     transition:color .2s ease, transform .2s ease;
   }
-  .ig-link:hover{color:var(--gold); transform:scale(1.08);}
+  .ig-link:hover{color:var(--muted); transform:scale(1.08);}
 
   main{padding-top:8px;}
   section{display:none;}
@@ -141,13 +141,13 @@
   .projects-head{padding:64px 0 44px; border-bottom:1px solid var(--line);}
   .projects-head h1{
     font-family:'Fraunces', serif;
-    font-weight:600;
+    font-weight:700;
     font-size:52px;
     line-height:1.04;
     letter-spacing:-0.01em;
     max-width:680px;
   }
-  .projects-head h1 span{color:var(--gold);}
+  .projects-head h1 span{color:var(--ink);}
   .projects-head p{
     margin-top:20px;
     font-size:16px;
@@ -220,7 +220,7 @@
   }
   .project-title{
     font-family:'Fraunces', serif;
-    font-weight:600;
+    font-weight:700;
     font-size:30px;
     letter-spacing:-0.01em;
     margin-bottom:10px;
@@ -233,14 +233,14 @@
   .about-grid{display:grid; grid-template-columns:0.95fr 1fr; gap:72px; align-items:center;}
   .about h1{
     font-family:'Fraunces', serif;
-    font-weight:600;
+    font-weight:700;
     font-size:46px;
     line-height:1.06;
     letter-spacing:-0.01em;
     margin-bottom:28px;
     max-width:520px;
   }
-  .about h1 .accent{color:var(--gold);}
+  .about h1 .accent{color:var(--ink);}
   .about p{
     font-size:16px; line-height:1.85; color:#3f3b30;
     max-width:480px; margin-bottom:20px;
@@ -277,13 +277,43 @@
   .closer h2{
     font-family:'Fraunces', serif;
     font-style:italic;
-    font-weight:500;
+    font-weight:700;
     font-size:64px;
     line-height:1.05;
     letter-spacing:-0.01em;
     color:var(--ink);
   }
-  .closer h2 span{color:var(--gold);}
+  .closer h2 span{color:var(--ink);}
+
+  .end-contact{
+    margin-top:72px;
+    display:flex;
+    gap:96px;
+    flex-wrap:wrap;
+  }
+  .end-label{
+    font-family:'Work Sans', sans-serif;
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--ink);
+    margin-bottom:12px;
+  }
+  .end-value{
+    display:inline-block;
+    font-family:'Work Sans', sans-serif;
+    font-size:20px;
+    color:var(--ink);
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+    transition:border-color .2s ease;
+  }
+  .end-value:hover{border-color:var(--ink);}
+  @media (max-width:760px){
+    .end-contact{gap:40px;}
+    .end-value{font-size:17px;}
+  }
 
   .about-logo{
     margin-top:56px;
@@ -315,7 +345,8 @@
     .projects-head h1, .about h1{font-size:34px;}
     .project-row, .about-grid{grid-template-columns:1fr; gap:24px;}
     .project-row:nth-child(even) .project-img{order:0;}
-    .nav-links{gap:20px;}
+    nav{flex-wrap:wrap; row-gap:12px;}
+    .nav-links{gap:20px; width:100%; justify-content:flex-start;}
     .footer-row{flex-direction:column; align-items:flex-start;}
   }
 </style>
@@ -442,6 +473,17 @@
 
       <div class="closer">
         <h2>Emerging art,<br><span>everywhere.</span></h2>
+      </div>
+
+      <div class="end-contact">
+        <div>
+          <div class="end-label">Contact</div>
+          <a href="mailto:info@obra-art.com" class="end-value">info@obra-art.com</a>
+        </div>
+        <div>
+          <div class="end-label">Follow</div>
+          <a href="https://instagram.com/obra__art" target="_blank" rel="noopener" class="end-value">@obra__art</a>
+        </div>
       </div>
 
       <div class="about-logo">
