@@ -31,7 +31,6 @@
     position:sticky; top:0; z-index:50;
     background:rgba(255,255,255,0.92);
     backdrop-filter:blur(6px);
-    border-bottom:1px solid var(--line);
   }
   nav{display:flex; align-items:center; justify-content:space-between; padding:24px 0;}
   .logo{
@@ -98,12 +97,12 @@
 
   .hero-carousel{
     position:relative;
-    width:100%;
+    margin:28px;
     height:56vh;
-    min-height:340px;
-    max-height:560px;
+    min-height:320px;
+    max-height:540px;
     overflow:hidden;
-    background:var(--line);
+    background:var(--paper);
   }
   .hero-slide{
     position:absolute;
@@ -250,15 +249,12 @@
     font-weight:700;
     font-size:15px;
     letter-spacing:0.03em;
-    color:var(--rust);
+    color:var(--ink);
     margin-top:6px;
   }
   .about-img{
     aspect-ratio:4/5;
-    background:repeating-linear-gradient(135deg, #ece4cf, #ece4cf 2px, #f3ecdb 2px, #f3ecdb 16px);
-    border:1px solid var(--line);
-    display:flex; align-items:center; justify-content:center;
-    color:var(--muted); font-size:12px; text-align:center; padding:24px;
+    overflow:hidden;
   }
 
   .cta{margin-top:96px; padding-top:52px; border-top:1px solid var(--line);}
@@ -348,6 +344,7 @@
     nav{flex-wrap:wrap; row-gap:12px;}
     .nav-links{gap:20px; width:100%; justify-content:flex-start;}
     .footer-row{flex-direction:column; align-items:flex-start;}
+    .hero-carousel{margin:14px;}
   }
 </style>
 </head>
@@ -356,7 +353,7 @@
 <header id="site-header">
   <div class="wrap">
     <nav>
-      <button class="logo" onclick="showSection('about')"><span class="full">OBRA Art Projects</span><span class="short"><img src="images/logo.png" alt="OBRA Art Projects"></span></button>
+      <button class="logo" onclick="showSection('projects')"><span class="full">OBRA Art Projects</span><span class="short"><img src="images/logo.png" alt="OBRA Art Projects"></span></button>
       <ul class="nav-links">
         <li><button data-target="projects" class="active" onclick="showSection('projects')">Projects</button></li>
         <li><button data-target="about" onclick="showSection('about')">About</button></li>
@@ -497,16 +494,6 @@
 <footer>
   <div class="wrap footer-row">
     <div class="loc">Luxembourg &mdash; &copy; 2026 OBRA Art</div>
-    <ul class="footer-links">
-      <li><button onclick="showSection('projects')">Projects</button></li>
-      <li><button onclick="showSection('about')">About</button></li>
-      <li><a href="mailto:info@obra-art.com" class="accent footer-link-a">Contact</a></li>
-      <li>
-        <a href="https://instagram.com/obra__art" target="_blank" rel="noopener" class="ig-link" aria-label="OBRA Art on Instagram">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="0.9" fill="currentColor" stroke="none"/></svg>
-        </a>
-      </li>
-    </ul>
   </div>
 </footer>
 
