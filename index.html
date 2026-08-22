@@ -214,6 +214,7 @@
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:8px;
+    overflow:hidden;
   }
   .project-gallery img{
     width:100%;
@@ -222,6 +223,14 @@
     object-fit:cover;
     display:block;
     border:1px solid var(--line);
+    transition:transform .5s ease, box-shadow .5s ease;
+    cursor:pointer;
+  }
+  .project-gallery img:hover{
+    transform:scale(1.06);
+    box-shadow:0 12px 28px rgba(24,21,15,0.18);
+    position:relative;
+    z-index:2;
   }
   .project-row.full{
     display:block;
@@ -379,6 +388,14 @@
     .nav-links{gap:20px; width:100%; justify-content:flex-start;}
     .footer-row{flex-direction:column; align-items:flex-start;}
     .hero-carousel{margin:14px;}
+  }  .reveal{
+    opacity:0;
+    transform:translateY(22px);
+    transition:opacity .8s ease, transform .8s ease;
+  }
+  .reveal.in-view{
+    opacity:1;
+    transform:translateY(0);
   }
 </style>
 </head>
@@ -413,13 +430,13 @@
       </button>
     </div>
     <div class="wrap">
-      <div class="projects-head">
+      <div class="projects-head reveal">
         <div class="eyebrow">Selected exhibitions</div>
       </div>
 
       <div class="project-list">
 
-        <div class="project-row full">
+        <div class="project-row full reveal">
           <div>
             <div class="eyebrow">Solo exhibition</div>
             <div class="project-title">Jomad — Parade</div>
@@ -445,7 +462,7 @@
           </div>
         </div>
 
-        <div class="project-row full">
+        <div class="project-row full reveal">
           <div>
             <div class="eyebrow">Exhibition</div>
             <div class="project-title">Miriam Dema &amp; Chidy Wayne</div>
@@ -479,7 +496,7 @@
 
   <section id="about">
     <div class="wrap about">
-      <div class="about-grid">
+      <div class="about-grid reveal">
         <div>
           <div class="eyebrow">About OBRA</div>
           <h1>Hidden gems, <span class="accent">unearthed.</span></h1>
@@ -491,7 +508,7 @@
         <div class="about-img"><img src="images/about-founders.jpg" alt="Borja Giralt &amp; Charlotte Paritzky" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
       </div>
 
-      <div class="cta">
+      <div class="cta reveal">
         <h2>Want to know more?</h2>
         <form onsubmit="event.preventDefault();">
           <input type="email" placeholder="Email address" required>
@@ -499,7 +516,7 @@
         </form>
       </div>
 
-      <div class="end-contact">
+      <div class="end-contact reveal">
         <div>
           <div class="end-label">Contact</div>
           <a href="mailto:info@obra-art.com" class="end-value">info@obra-art.com</a>
@@ -510,7 +527,7 @@
         </div>
       </div>
 
-      <div class="about-logo">
+      <div class="about-logo reveal">
         <img src="images/logo.png" alt="OBRA Art Projects">
       </div>
     </div>
@@ -556,6 +573,16 @@ function heroPrev(){ heroShow(heroIndex - 1); }
 if(heroSlides.length > 1){
   setInterval(heroNext, 4000);
 }
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('in-view');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 </script>
 
 </body>
